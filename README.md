@@ -1,5 +1,5 @@
 # ohsome-examples
-Here you find examples and use cases for the ohsome API using jupyter notebooks.
+Here you find examples and use cases for the ohsome API using jupyter notebooks. 
 
 ## Jupyter Notebooks
 * [Analysing HOT Tasking Manager Projects in Nepal](/python/oshome_api_hot_tm_project1008.ipynb)
