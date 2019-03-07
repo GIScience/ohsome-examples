@@ -86,39 +86,29 @@ response <- elementsCountGroupByBoundary(bpolysLine)
 response$status_code
 ```
 
-    ## [1] 200
+    ## [1] 400
 
 ``` r
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 12:19
-    ##   Status: 200
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
+    ##   Date: 2019-03-07 18:21
+    ##   Status: 400
     ##   Content-Type: application/json;charset=UTF-8
-    ##   Size: 5.86 kB
+    ##   Size: 238 B
     ## {
-    ##   "attribution" : {
-    ##     "url" : "https://ohsome.org/copyrights",
-    ##     "text" : "© OpenStreetMap contributors"
-    ##   },
-    ##   "apiVersion" : "0.9",
-    ##   "groupByResult" : [ {
-    ##     "result" : [ {
-    ##       "timestamp" : "2015-03-01T00:00:00Z",
-    ##       "value" : 305.0
-    ## ...
+    ##   "timestamp" : "2019-03-07T18:21:52.687",
+    ##   "status" : 400,
+    ##   "message" : "You need to define one of the boundary parameters (bboxes...
+    ##   "requestUrl" : "https://api.ohsome.org/v0.9/elements/count/groupBy/bou...
 
 ``` r
 contentLine <- httr::content(response)
 contentLine$groupByResult[[1]]$result[[1]]
 ```
 
-    ## $timestamp
-    ## [1] "2015-03-01T00:00:00Z"
-    ## 
-    ## $value
-    ## [1] 305
+    ## NULL
 
 #### POST requst using geoJSON format
 
@@ -128,33 +118,23 @@ response <- elementsCountGroupByBoundary(geoJSON$text)
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 12:19
-    ##   Status: 200
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
+    ##   Date: 2019-03-07 18:21
+    ##   Status: 400
     ##   Content-Type: application/json;charset=UTF-8
-    ##   Size: 5.86 kB
+    ##   Size: 238 B
     ## {
-    ##   "attribution" : {
-    ##     "url" : "https://ohsome.org/copyrights",
-    ##     "text" : "© OpenStreetMap contributors"
-    ##   },
-    ##   "apiVersion" : "0.9",
-    ##   "groupByResult" : [ {
-    ##     "result" : [ {
-    ##       "timestamp" : "2015-03-01T00:00:00Z",
-    ##       "value" : 305.0
-    ## ...
+    ##   "timestamp" : "2019-03-07T18:21:53.011",
+    ##   "status" : 400,
+    ##   "message" : "You need to define one of the boundary parameters (bboxes...
+    ##   "requestUrl" : "https://api.ohsome.org/v0.9/elements/count/groupBy/bou...
 
 ``` r
 content <- httr::content(response)
 content$groupByResult[[1]]$result[[1]]
 ```
 
-    ## $timestamp
-    ## [1] "2015-03-01T00:00:00Z"
-    ## 
-    ## $value
-    ## [1] 305
+    ## NULL
 
 ### request with CSV response
 
@@ -184,19 +164,13 @@ response <- elementsCountGroupByBoundaryCSV(geoJSON$text)
 response 
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 12:19
-    ##   Status: 200
-    ##   Content-Type: text/csv;charset=UTF-8
-    ##   Size: 848 B
-    ## # Copyright URL: https://ohsome.org/copyrights
-    ## # Copyright Text: © OpenStreetMap contributors
-    ## # API Version: 0.9
-    ## timestamp;feature1;feature2;feature3;feature4;feature5;feature6;feature7
-    ## 2015-03-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;673.0;76.0
-    ## 2015-04-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;673.0;76.0
-    ## 2015-05-01T00:00:00Z;639.0;797.0;1067.0;934.0;520.0;1176.0;282.0
-    ## 2015-06-01T00:00:00Z;1371.0;1244.0;1992.0;1509.0;675.0;1734.0;821.0
-    ## 2015-07-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1752.0;822.0
-    ## 2015-08-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1749.0;822.0
-    ## ...
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
+    ##   Date: 2019-03-07 18:21
+    ##   Status: 400
+    ##   Content-Type: application/json;charset=UTF-8
+    ##   Size: 238 B
+    ## {
+    ##   "timestamp" : "2019-03-07T18:21:53.363",
+    ##   "status" : 400,
+    ##   "message" : "You need to define one of the boundary parameters (bboxes...
+    ##   "requestUrl" : "https://api.ohsome.org/v0.9/elements/count/groupBy/bou...
