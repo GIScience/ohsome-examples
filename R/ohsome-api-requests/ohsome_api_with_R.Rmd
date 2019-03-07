@@ -3,6 +3,7 @@ title: "How to use the ohsome API with R"
 author: "Lukas Loos"
 date: "5 März 2019"
 output: rmarkdown::github_document
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = paste0(dirname(inputFile),'/README.md')) })
 ---
 
 ```{r setup, include=FALSE}
