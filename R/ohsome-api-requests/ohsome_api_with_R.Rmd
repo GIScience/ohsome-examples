@@ -28,7 +28,7 @@ There are different packages available to use for http requests with R. This tut
 ```{r}
 library(rapiclient)
 
-api <- get_api(url= "https://api.ohsome.org/v0.9-ignite/docs?group=dataAggregation")
+api <- get_api(url= "https://api.ohsome.org/v0.9/docs?group=dataAggregation")
 
 operations <- get_operations(api)
 
@@ -62,7 +62,7 @@ elementsCountGroupByBoundary <- function(x) {
   osmTypes <- "way"
   osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
             encode = "form", 
             body = list(
               bpolys = x, 
@@ -105,7 +105,7 @@ elementsCountGroupByBoundaryCSV <- function(x) {
   osmTypes <- "way"
   osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
             encode = "form", 
             body = list(
               format = "csv",

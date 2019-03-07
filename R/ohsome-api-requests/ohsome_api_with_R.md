@@ -25,7 +25,7 @@ Prerequisites
 ``` r
 library(rapiclient)
 
-api <- get_api(url= "https://api.ohsome.org/v0.9-ignite/docs?group=dataAggregation")
+api <- get_api(url= "https://api.ohsome.org/v0.9/docs?group=dataAggregation")
 
 operations <- get_operations(api)
 
@@ -65,7 +65,7 @@ elementsCountGroupByBoundary <- function(x) {
   osmTypes <- "way"
   osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
             encode = "form", 
             body = list(
               bpolys = x, 
@@ -92,7 +92,7 @@ response$status_code
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
     ##   Date: 2019-03-07 11:23
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
@@ -128,7 +128,7 @@ response <- elementsCountGroupByBoundary(geoJSON$text)
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
     ##   Date: 2019-03-07 11:23
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
@@ -166,7 +166,7 @@ elementsCountGroupByBoundaryCSV <- function(x) {
   osmTypes <- "way"
   osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
             encode = "form", 
             body = list(
               format = "csv",
@@ -184,7 +184,7 @@ response <- elementsCountGroupByBoundaryCSV(geoJSON$text)
 response 
 ```
 
-    ## Response [https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary]
+    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
     ##   Date: 2019-03-07 11:23
     ##   Status: 200
     ##   Content-Type: text/csv;charset=UTF-8
