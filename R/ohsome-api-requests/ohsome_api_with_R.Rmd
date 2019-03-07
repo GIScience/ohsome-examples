@@ -1,0 +1,129 @@
+---
+title: "How to use the ohsome API with R"
+author: "Lukas Loos"
+date: "5 März 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction 
+There are different packages available to use for http requests with R. This tutorial will cover the packages **httr** and **rapiclient**.
+
+## Prerequisites
+
+  * install packages: httr, jsonlite, rapiclient and readtext 
+
+
+---
+
+###rapiclient###
+  * https://cran.r-project.org/web/packages/rapiclient/index.html
+  * https://github.com/bergant/rapiclient
+  * generates functions for the API endpoints
+  * no support for POST requests
+  
+```{r}
+library(rapiclient)
+
+api <- get_api(url= "https://api.ohsome.org/v0.9-ignite/docs?group=dataAggregation")
+
+operations <- get_operations(api)
+
+schemas <- get_schemas(api)
+
+result <- operations$elementsCount(bboxes = '85.31015,27.71919,85.31828,27.72459', keys = 'building', values = 'yes', time = '2014-01-01/2017-01-01/P1Y', types = 'way')
+
+content <- httr::content(result)
+
+content$result[[1]]
+
+```
+---
+###httr###
+  * https://cran.r-project.org/web/packages/httr/index.html
+  * https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html
+  * use httr if you want to send POST requests.
+
+
+```{r}
+library(httr)
+library(readtext)
+```
+
+```{r}
+
+elementsCountGroupByBoundary <- function(x) {
+  
+  osmKeys <- "building"
+  osmTime <- "2015-03-01/2015-12-01/P1M"
+  osmTypes <- "way"
+  osmValues <- "yes"
+
+    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+            encode = "form", 
+            body = list(
+              bpolys = x, 
+              keys = osmKeys, 
+              time = osmTime, 
+              types = osmTypes,
+              values = osmValues)
+  )  
+  return(r)
+}
+```
+
+####POST requst using "|" delimited format####
+```{r warning=FALSE}
+bpolysLine <- readLines("data/example-data.lineformat")
+response <- elementsCountGroupByBoundary(bpolysLine)
+response$status_code
+response
+contentLine <- httr::content(response)
+contentLine$groupByResult[[1]]$result[[1]]
+```
+
+
+
+####POST requst using geoJSON format####
+```{r warning=FALSE}
+
+geoJSON <- readtext("data/example-data.geojson")
+response <- elementsCountGroupByBoundary(geoJSON$text)
+response
+content <- httr::content(response)
+content$groupByResult[[1]]$result[[1]]
+```
+### request with CSV response###
+```{r warning=FALSE}
+elementsCountGroupByBoundaryCSV <- function(x) {
+  
+  osmKeys <- "building"
+  osmTime <- "2015-03-01/2015-12-01/P1M"
+  osmTypes <- "way"
+  osmValues <- "yes"
+
+    r <- POST("https://api.ohsome.org/v0.9-ignite/elements/count/groupBy/boundary", 
+            encode = "form", 
+            body = list(
+              format = "csv",
+              bpolys = x, 
+              keys = osmKeys, 
+              time = osmTime, 
+              types = osmTypes,
+              values = osmValues)
+  )  
+  return(r)
+}
+
+geoJSON <- readtext("data/example-data.geojson")
+response <- elementsCountGroupByBoundaryCSV(geoJSON$text)
+response 
+```
+
+
+
+
+
