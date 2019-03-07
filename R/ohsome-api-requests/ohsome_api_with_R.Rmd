@@ -2,7 +2,7 @@
 title: "How to use the ohsome API with R"
 author: "Lukas Loos"
 date: "5 März 2019"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
