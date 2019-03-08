@@ -93,7 +93,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 11:23
+    ##   Date: 2019-03-08 09:48
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -129,7 +129,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 11:23
+    ##   Date: 2019-03-08 09:48
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -185,7 +185,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-07 11:23
+    ##   Date: 2019-03-08 09:48
     ##   Status: 200
     ##   Content-Type: text/csv;charset=UTF-8
     ##   Size: 848 B
