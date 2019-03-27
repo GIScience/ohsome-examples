@@ -2,7 +2,8 @@
 Here you find examples and use cases for the ohsome API using jupyter notebooks. 
 
 ## Jupyter Notebooks
-* [Analysing HOT Tasking Manager Projects in Nepal](/python/oshome_api_hot_tm_project1008.ipynb)
+* [Analysing HOT Tasking Manager Projects in Nepal](/python/ohsome-data-aggregation.ipynb)
+* [ohsome APT: Data Aggregation Endpoint](/python/oshome_api_hot_tm_project1008.ipynb)
 
 ## Documentation of Ressources:
 * [ohsome Rest-API](http://api.ohsome.org)
