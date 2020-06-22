@@ -35,7 +35,7 @@ operations <- get_operations(api)
 
 schemas <- get_schemas(api)
 
-result <- operations$elementsCount(bboxes = '85.31015,27.71919,85.31828,27.72459', filter = 'building=yes and type:polygon', time = '2014-01-01/2017-01-01/P1Y')
+result <- operations$count(bboxes = '85.31015,27.71919,85.31828,27.72459', filter = 'building=yes and type:polygon', time = '2014-01-01/2017-01-01/P1Y')
 
 content <- httr::content(result)
 
@@ -103,7 +103,7 @@ elementsCountGroupByBoundaryCSV <- function(x) {
             body = list(
               format = "csv",
               bpolys = x,
-              filter = 'building=yes and geometry:polygon'
+              filter = 'building=yes and geometry:polygon',
               time = osmTime)
   )  
   return(r)

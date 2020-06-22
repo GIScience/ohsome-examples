@@ -3,54 +3,51 @@ How to use the ohsome API with R
 Lukas Loos
 5 März 2019
 
-Introduction
-------------
+## Introduction
 
-There are different packages available to use for http requests with R. This tutorial will cover the packages **httr** and **rapiclient**.
+There are different packages available to use for http requests with R.
+This tutorial will cover the packages **httr** and **rapiclient**.
 
-Prerequisites
--------------
+## Prerequisites
 
--   install packages: httr, jsonlite, rapiclient and readtext
+  - install packages: httr, jsonlite, rapiclient and readtext
 
-------------------------------------------------------------------------
+-----
 
-### rapiclient
-
--   <https://cran.r-project.org/web/packages/rapiclient/index.html>
--   <https://github.com/bergant/rapiclient>
--   generates functions for the API endpoints
--   no support for POST requests
+\#\#\#rapiclient\#\#\# \*
+<https://cran.r-project.org/web/packages/rapiclient/index.html> \*
+<https://github.com/bergant/rapiclient> \* generates functions for the
+API endpoints \* no support for POST requests
 
 ``` r
 library(rapiclient)
 
-api <- get_api(url= "https://api.ohsome.org/v0.9/docs?group=dataAggregation")
+api <- get_api(url= "https://api.ohsome.org/v1/docs?group=Data%20Aggregation")
 
 operations <- get_operations(api)
 
 schemas <- get_schemas(api)
 
-result <- operations$elementsCount(bboxes = '85.31015,27.71919,85.31828,27.72459', keys = 'building', values = 'yes', time = '2014-01-01/2017-01-01/P1Y', types = 'way')
+result <- operations$count(bboxes = '85.31015,27.71919,85.31828,27.72459', filter = 'building=yes and type:polygon', time = '2014-01-01/2017-01-01/P1Y')
+```
 
+    ## Warning in if (substr(type, 1, 1) == ".") {: the condition has length > 1 and
+    ## only the first element will be used
+
+``` r
 content <- httr::content(result)
 
 content$result[[1]]
 ```
 
-    ## $timestamp
-    ## [1] "2014-01-01T00:00:00Z"
-    ## 
-    ## $value
-    ## [1] 761
+    ## NULL
 
-------------------------------------------------------------------------
+-----
 
-### httr
-
--   <https://cran.r-project.org/web/packages/httr/index.html>
--   <https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>
--   use httr if you want to send POST requests.
+\#\#\#httr\#\#\# \*
+<https://cran.r-project.org/web/packages/httr/index.html> \*
+<https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>
+\* use httr if you want to send POST requests.
 
 ``` r
 library(httr)
@@ -60,25 +57,20 @@ library(readtext)
 ``` r
 elementsCountGroupByBoundary <- function(x) {
   
-  osmKeys <- "building"
   osmTime <- "2015-03-01/2015-12-01/P1M"
-  osmTypes <- "way"
-  osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
-            encode = "form", 
+    r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
+            encode = "form",
             body = list(
-              bpolys = x, 
-              keys = osmKeys, 
-              time = osmTime, 
-              types = osmTypes,
-              values = osmValues)
+              bpolys = x,
+              filter = 'building=yes and geometry:polygon',
+              time = osmTime)
   )  
   return(r)
 }
 ```
 
-#### POST requst using "|" delimited format
+\#\#\#\#POST requst using “|” delimited format\#\#\#\#
 
 ``` r
 bpolysLine <- readLines("data/example-data.lineformat")
@@ -92,8 +84,8 @@ response$status_code
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-08 09:58
+    ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
+    ##   Date: 2020-06-22 16:54
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -102,7 +94,7 @@ response
     ##     "url" : "https://ohsome.org/copyrights",
     ##     "text" : "© OpenStreetMap contributors"
     ##   },
-    ##   "apiVersion" : "0.9",
+    ##   "apiVersion" : "1.0.0",
     ##   "groupByResult" : [ {
     ##     "result" : [ {
     ##       "timestamp" : "2015-03-01T00:00:00Z",
@@ -120,7 +112,7 @@ contentLine$groupByResult[[1]]$result[[1]]
     ## $value
     ## [1] 305
 
-#### POST requst using geoJSON format
+\#\#\#\#POST requst using geoJSON format\#\#\#\#
 
 ``` r
 geoJSON <- readtext("data/example-data.geojson")
@@ -128,8 +120,8 @@ response <- elementsCountGroupByBoundary(geoJSON$text)
 response
 ```
 
-    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-08 09:58
+    ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
+    ##   Date: 2020-06-22 16:54
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -138,7 +130,7 @@ response
     ##     "url" : "https://ohsome.org/copyrights",
     ##     "text" : "© OpenStreetMap contributors"
     ##   },
-    ##   "apiVersion" : "0.9",
+    ##   "apiVersion" : "1.0.0",
     ##   "groupByResult" : [ {
     ##     "result" : [ {
     ##       "timestamp" : "2015-03-01T00:00:00Z",
@@ -161,20 +153,15 @@ content$groupByResult[[1]]$result[[1]]
 ``` r
 elementsCountGroupByBoundaryCSV <- function(x) {
   
-  osmKeys <- "building"
   osmTime <- "2015-03-01/2015-12-01/P1M"
-  osmTypes <- "way"
-  osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
-            encode = "form", 
+    r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
+            encode = "form",
             body = list(
               format = "csv",
-              bpolys = x, 
-              keys = osmKeys, 
-              time = osmTime, 
-              types = osmTypes,
-              values = osmValues)
+              bpolys = x,
+              filter = 'building=yes and geometry:polygon',
+              time = osmTime)
   )  
   return(r)
 }
@@ -184,19 +171,19 @@ response <- elementsCountGroupByBoundaryCSV(geoJSON$text)
 response 
 ```
 
-    ## Response [https://api.ohsome.org/v0.9/elements/count/groupBy/boundary]
-    ##   Date: 2019-03-08 09:58
+    ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
+    ##   Date: 2020-06-22 16:54
     ##   Status: 200
     ##   Content-Type: text/csv;charset=UTF-8
-    ##   Size: 848 B
+    ##   Size: 850 B
     ## # Copyright URL: https://ohsome.org/copyrights
     ## # Copyright Text: © OpenStreetMap contributors
-    ## # API Version: 0.9
+    ## # API Version: 1.0.0
     ## timestamp;feature1;feature2;feature3;feature4;feature5;feature6;feature7
-    ## 2015-03-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;673.0;76.0
-    ## 2015-04-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;673.0;76.0
-    ## 2015-05-01T00:00:00Z;639.0;797.0;1067.0;934.0;520.0;1176.0;282.0
-    ## 2015-06-01T00:00:00Z;1371.0;1244.0;1992.0;1509.0;675.0;1734.0;821.0
-    ## 2015-07-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1752.0;822.0
-    ## 2015-08-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1749.0;822.0
+    ## 2015-03-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;674.0;76.0
+    ## 2015-04-01T00:00:00Z;305.0;191.0;380.0;659.0;0.0;674.0;76.0
+    ## 2015-05-01T00:00:00Z;639.0;797.0;1067.0;934.0;520.0;1177.0;282.0
+    ## 2015-06-01T00:00:00Z;1371.0;1244.0;1992.0;1509.0;675.0;1737.0;821.0
+    ## 2015-07-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1755.0;822.0
+    ## 2015-08-01T00:00:00Z;1501.0;1274.0;1990.0;1570.0;675.0;1752.0;822.0
     ## ...
