@@ -29,13 +29,13 @@ There are different packages available to use for http requests with R. This tut
 ```{r}
 library(rapiclient)
 
-api <- get_api(url= "https://api.ohsome.org/v0.9/docs?group=dataAggregation")
+api <- get_api(url= "https://api.ohsome.org/v1/docs?group=Data%20Aggregation")
 
 operations <- get_operations(api)
 
 schemas <- get_schemas(api)
 
-result <- operations$elementsCount(bboxes = '85.31015,27.71919,85.31828,27.72459', keys = 'building', values = 'yes', time = '2014-01-01/2017-01-01/P1Y', types = 'way')
+result <- operations$elementsCount(bboxes = '85.31015,27.71919,85.31828,27.72459', filter = 'building=yes and type:polygon', time = '2014-01-01/2017-01-01/P1Y')
 
 content <- httr::content(result)
 
@@ -58,19 +58,14 @@ library(readtext)
 
 elementsCountGroupByBoundary <- function(x) {
   
-  osmKeys <- "building"
   osmTime <- "2015-03-01/2015-12-01/P1M"
-  osmTypes <- "way"
-  osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
-            encode = "form", 
+    r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
+            encode = "form",
             body = list(
-              bpolys = x, 
-              keys = osmKeys, 
-              time = osmTime, 
-              types = osmTypes,
-              values = osmValues)
+              bpolys = x,
+              filter = 'building=yes and geometry:polygon',
+              time = osmTime)
   )  
   return(r)
 }
@@ -101,20 +96,15 @@ content$groupByResult[[1]]$result[[1]]
 ```{r warning=FALSE}
 elementsCountGroupByBoundaryCSV <- function(x) {
   
-  osmKeys <- "building"
   osmTime <- "2015-03-01/2015-12-01/P1M"
-  osmTypes <- "way"
-  osmValues <- "yes"
 
-    r <- POST("https://api.ohsome.org/v0.9/elements/count/groupBy/boundary", 
-            encode = "form", 
+    r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
+            encode = "form",
             body = list(
               format = "csv",
-              bpolys = x, 
-              keys = osmKeys, 
-              time = osmTime, 
-              types = osmTypes,
-              values = osmValues)
+              bpolys = x,
+              filter = 'building=yes and geometry:polygon'
+              time = osmTime)
   )  
   return(r)
 }
