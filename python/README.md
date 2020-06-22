@@ -15,7 +15,7 @@ Get the git repository.
 ```bash
 git clone 
 https://github.com/GIScience/ohsome-examples.git
-cd ohsome-examples
+cd ohsome-examples/python
 ```
 
 Set up and activate virtual environment.
