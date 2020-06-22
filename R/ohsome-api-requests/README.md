@@ -14,10 +14,14 @@ This tutorial will cover the packages **httr** and **rapiclient**.
 
 -----
 
-\#\#\#rapiclient\#\#\# \*
-<https://cran.r-project.org/web/packages/rapiclient/index.html> \*
-<https://github.com/bergant/rapiclient> \* generates functions for the
-API endpoints \* no support for POST requests
+### rapiclient
+
+  - <https://cran.r-project.org/web/packages/rapiclient/index.html>
+  - <https://github.com/bergant/rapiclient>
+  - generates functions for the API endpoints
+  - no support for POST requests
+
+<!-- end list -->
 
 ``` r
 library(rapiclient)
@@ -44,10 +48,13 @@ content$result[[1]]
 
 -----
 
-\#\#\#httr\#\#\# \*
-<https://cran.r-project.org/web/packages/httr/index.html> \*
-<https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>
-\* use httr if you want to send POST requests.
+### httr
+
+  - <https://cran.r-project.org/web/packages/httr/index.html>
+  - <https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>
+  - use httr if you want to send POST requests.
+
+<!-- end list -->
 
 ``` r
 library(httr)
@@ -70,7 +77,7 @@ elementsCountGroupByBoundary <- function(x) {
 }
 ```
 
-\#\#\#\#POST requst using “|” delimited format\#\#\#\#
+#### POST requst using “|” delimited format
 
 ``` r
 bpolysLine <- readLines("data/example-data.lineformat")
@@ -85,7 +92,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
-    ##   Date: 2020-06-22 16:54
+    ##   Date: 2020-06-22 16:58
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -112,7 +119,7 @@ contentLine$groupByResult[[1]]$result[[1]]
     ## $value
     ## [1] 305
 
-\#\#\#\#POST requst using geoJSON format\#\#\#\#
+#### POST requst using geoJSON format
 
 ``` r
 geoJSON <- readtext("data/example-data.geojson")
@@ -121,7 +128,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
-    ##   Date: 2020-06-22 16:54
+    ##   Date: 2020-06-22 16:58
     ##   Status: 200
     ##   Content-Type: application/json;charset=UTF-8
     ##   Size: 5.86 kB
@@ -148,7 +155,7 @@ content$groupByResult[[1]]$result[[1]]
     ## $value
     ## [1] 305
 
-### request with CSV response
+#### request with CSV response
 
 ``` r
 elementsCountGroupByBoundaryCSV <- function(x) {
@@ -172,7 +179,7 @@ response
 ```
 
     ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
-    ##   Date: 2020-06-22 16:54
+    ##   Date: 2020-06-22 16:58
     ##   Status: 200
     ##   Content-Type: text/csv;charset=UTF-8
     ##   Size: 850 B

@@ -20,7 +20,8 @@ There are different packages available to use for http requests with R. This tut
 
 ---
 
-###rapiclient###
+### rapiclient
+
   * https://cran.r-project.org/web/packages/rapiclient/index.html
   * https://github.com/bergant/rapiclient
   * generates functions for the API endpoints
@@ -43,7 +44,8 @@ content$result[[1]]
 
 ```
 ---
-###httr###
+### httr
+
   * https://cran.r-project.org/web/packages/httr/index.html
   * https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html
   * use httr if you want to send POST requests.
@@ -71,7 +73,8 @@ elementsCountGroupByBoundary <- function(x) {
 }
 ```
 
-####POST requst using "|" delimited format####
+#### POST requst using "|" delimited format
+
 ```{r warning=FALSE}
 bpolysLine <- readLines("data/example-data.lineformat")
 response <- elementsCountGroupByBoundary(bpolysLine)
@@ -83,7 +86,8 @@ contentLine$groupByResult[[1]]$result[[1]]
 
 
 
-####POST requst using geoJSON format####
+#### POST requst using geoJSON format
+
 ```{r warning=FALSE}
 
 geoJSON <- readtext("data/example-data.geojson")
@@ -92,7 +96,9 @@ response
 content <- httr::content(response)
 content$groupByResult[[1]]$result[[1]]
 ```
-### request with CSV response###
+
+#### request with CSV response
+
 ```{r warning=FALSE}
 elementsCountGroupByBoundaryCSV <- function(x) {
   
