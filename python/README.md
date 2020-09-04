@@ -2,7 +2,7 @@
 Here you find examples and use cases for the ohsome API using jupyter notebooks. 
 
 ## Jupyter Notebooks
-* [Analysing HOT Tasking Manager Projects in Nepal](/python/ohsome-data-aggregation.ipynb)
+* [Analysing HOT Tasking Manager Projects in Nepal](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome_api_hot_tm_project1008.ipynb)
 * [ohsome API: Data Aggregation Endpoint](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome-aggregation-plot.ipynb)
 
 ## Documentation of Ressources:
