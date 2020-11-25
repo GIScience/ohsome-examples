@@ -23,3 +23,7 @@ You can find further usage examples of the ohsome API in the following places:
 * [ohsome-api-analysis-examples](https://gitlab.gistools.geog.uni-heidelberg.de/giscience/big-data/ohsome/ohsome-api-analysis-examples) – a collection of further examples of analyses using the ohsome API.
 * the whole [how to become ohsome](http://k1z.blog.uni-heidelberg.de/tag/become-ohsome/) series on the giscience blog.
 * [visualizing the evolution of OSM data using QGIS](https://gitlab.gistools.geog.uni-heidelberg.de/-/snippets/23)
+
+## Contributing
+
+Please read our [contributing guide](https://github.com/GIScience/ohsome-examples/tree/master/CONTRIBUTING.md) if you're interested in helping to improve this repository.
