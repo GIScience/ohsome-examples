@@ -1,6 +1,6 @@
 # Contributing
 
-Optimally, when contributing to this repository, please first discuss the change you wish to make via an [issue](https://github.com/GIScience/ohsome-examples/issues/new), [email](mailto:ohsome@heigit.org), or any other method with the owners of this repository before making a change.
+Optimally, when contributing to this repository, please first discuss the change you wish to make via an [issue](https://github.com/GIScience/ohsome-examples/issues/new), [email](mailto:ohsome@heigit.org), or any other method with the [owners](https://github.com/orgs/GIScience/teams/ohsome/members) of this repository before making a change.
 
 ## Content and Aims of This Repository
 
