@@ -1,9 +1,11 @@
-# ohsome-examples
-Here you find examples and use cases for the ohsome API using jupyter notebooks. 
+# ohsome examples in Python
+Here you find examples and use cases for the ohsome API using jupyter notebooks.
 
 ## Jupyter Notebooks
+
+* [Data Aggregation Endpoint](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome-data-aggregation.ipynb)
 * [Analysing HOT Tasking Manager Projects in Nepal](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome_api_hot_tm_project1008.ipynb)
-* [ohsome API: Data Aggregation Endpoint](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome-aggregation-plot.ipynb)
+* [Complex analysis with the magical filter parameter](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/cycling-magic-filter-ohsomeAPI.ipynb)
 
 ## Documentation of Ressources:
 * [ohsome Rest-API](http://api.ohsome.org)
@@ -13,7 +15,7 @@ Here you find examples and use cases for the ohsome API using jupyter notebooks.
 
 Get the git repository.
 ```bash
-git clone 
+git clone
 https://github.com/GIScience/ohsome-examples.git
 cd ohsome-examples/python
 ```

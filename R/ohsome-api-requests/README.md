@@ -1,7 +1,5 @@
 How to use the ohsome API with R
 ================
-Lukas Loos
-5 März 2019
 
 ## Introduction
 
@@ -63,7 +61,7 @@ library(readtext)
 
 ``` r
 elementsCountGroupByBoundary <- function(x) {
-  
+
   osmTime <- "2015-03-01/2015-12-01/P1M"
 
     r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
@@ -115,7 +113,7 @@ contentLine$groupByResult[[1]]$result[[1]]
 
     ## $timestamp
     ## [1] "2015-03-01T00:00:00Z"
-    ## 
+    ##
     ## $value
     ## [1] 305
 
@@ -151,7 +149,7 @@ content$groupByResult[[1]]$result[[1]]
 
     ## $timestamp
     ## [1] "2015-03-01T00:00:00Z"
-    ## 
+    ##
     ## $value
     ## [1] 305
 
@@ -159,7 +157,7 @@ content$groupByResult[[1]]$result[[1]]
 
 ``` r
 elementsCountGroupByBoundaryCSV <- function(x) {
-  
+
   osmTime <- "2015-03-01/2015-12-01/P1M"
 
     r <- POST("https://api.ohsome.org/v1/elements/count/groupBy/boundary",
@@ -175,7 +173,7 @@ elementsCountGroupByBoundaryCSV <- function(x) {
 
 geoJSON <- readtext("data/example-data.geojson")
 response <- elementsCountGroupByBoundaryCSV(geoJSON$text)
-response 
+response
 ```
 
     ## Response [https://api.ohsome.org/v1/elements/count/groupBy/boundary]
