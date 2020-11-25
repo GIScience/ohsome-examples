@@ -8,8 +8,11 @@ Created on Fri Nov 13 10:28:46 2020
 
 import requests 
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import sys
+import warnings
+warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
 
 
 def get_time_stamp_list(date1,date2):
@@ -33,11 +36,12 @@ def get_time_stamp_list(date1,date2):
     return timestamps
 
 
-def plot_steps(ax,filter,location,BBOXes,color,TIME, STEPS):
+def plot_steps(ax,filter,location,BBOXes,c,len_filter,o,len_location,TIME, STEPS):
     '''plots the steps for a certain filter / locations'''
     URL = "https://api.ohsome.org/v1"
-    LINE_STYLE = ["-","--","-.",":"]
     
+    LINE_STYLE = ["-","--","-.",":"]
+    COLORS = ["C0","C1","C2","C3"]
     time = TIME.replace("/P1M","").replace("/",",")
     data = {"time":time, "filter":filter, "bboxes":BBOXes[location],"properties":"tags"}  
     with requests.post(URL+"/elementsFullHistory/centroid",data) as response:
@@ -47,7 +51,10 @@ def plot_steps(ax,filter,location,BBOXes,color,TIME, STEPS):
    
     
     if "features" in body:
-        for feature in body["features"]:
+        for i, feature in enumerate(body["features"]):
+            sys.stdout.write("\r finished {} out of {} filter for {} out of  {} locations | {} / {} Objects".format(o, len_filter,c +1,len_location,i,len(body["features"])))
+            sys.stdout.flush()
+            
             try:
                 timestamps = get_time_stamp_list(feature["properties"]['@validFrom'],feature["properties"]["@validTo"])
                 for timestamp in timestamps:
@@ -68,7 +75,7 @@ def plot_steps(ax,filter,location,BBOXes,color,TIME, STEPS):
        series = pd.Series({timestamp:len([i for i in tag_lens if i >= step])/len(tag_lens) for timestamp, tag_lens in tags.items()})
        df["{}_{}_{}".format(location,filter,step)]= series
        df.set_index(pd.to_datetime(df.index),inplace=True)
-       df["{}_{}_{}".format(location,filter,step)].plot(linestyle=LINE_STYLE[s],c=color,ax=ax,legend=True,title=filter)
+       df["{}_{}_{}".format(location,filter,step)].plot(linestyle=LINE_STYLE[s],c=COLORS[c],ax=ax,legend=True,title=filter)
 
 def level3(BBOXes,time):
     ''' plots the facilities for locations '''
@@ -128,14 +135,17 @@ def geometry(BBOXes,TIME):
 
 
 def plotTagcompletness(BBOXes,FILTER,TIME,STEPS=[0,3,5,10]):
-   
+    import sys
     COLORS = ["C0","C1","C2","C3"]
     
     fig, axs = plt.subplots(len(FILTER),figsize=(len(FILTER)*5,15))
     fig.suptitle("Portion of objects containing a minimum number of Tags")
     for c,location in enumerate(BBOXes.keys()):
         for o, filter in enumerate(FILTER):
-            plot_steps(axs[o],filter,location,BBOXes,COLORS[c],TIME,STEPS)
+            
+            sys.stdout.write("\r finished {} out of {} filter for {} out of  {} locations |  waiting for response".format(0,len(FILTER),c+1,len(BBOXes)))
+            sys.stdout.flush()
+            plot_steps(axs[o],filter,location,BBOXes,c,len(FILTER),o,len(BBOXes),TIME,STEPS)
         
 
 

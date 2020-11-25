@@ -13,6 +13,7 @@ folium==0.6.0
 html5lib==1.0.1
 idna==2.7
 ipykernel==4.8.2
+ipyleaflet==0.12.4
 ipython==6.5.0
 ipython-genutils==0.2.0
 ipywidgets==7.4.0
@@ -24,6 +25,7 @@ jupyter-client==5.2.3
 jupyter-console==5.2.0
 jupyter-core==4.4.0
 MarkupSafe==1.0
+matplotlib==3.0.3
 mistune==0.8.3
 munch==2.3.2
 nbconvert==5.3.1
@@ -38,6 +40,7 @@ plotly==3.1.1
 prometheus-client==0.3.1
 prompt-toolkit==1.0.15
 Pygments==2.2.0
+pyproj==2.4.2.post1
 python-dateutil==2.7.3
 pytz==2018.5
 pywinpty==0.5.4
