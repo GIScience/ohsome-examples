@@ -1,4 +1,5 @@
 # ohsome examples in Python
+
 Here you find examples and use cases for the ohsome API using jupyter notebooks.
 
 ## Jupyter Notebooks
@@ -8,7 +9,8 @@ Here you find examples and use cases for the ohsome API using jupyter notebooks.
 * [Complex analysis with the magical filter parameter](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/cycling-magic-filter-ohsomeAPI.ipynb)
 
 ## Documentation of Ressources:
-* [ohsome Rest-API](http://api.ohsome.org)
+
+* [ohsome API](http://api.ohsome.org)
 * [HOT Tasking Manager API](https://tasks.hotosm.org/api-docs/swagger-ui/index.html?url=https://tasks.hotosm.org/api/docs)
 
 ## Installation
@@ -34,7 +36,6 @@ cd venv/Scripts
 activate
 cd ../..
 ```
-
 
 Install all required python-packages.
 ```

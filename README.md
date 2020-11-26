@@ -4,7 +4,7 @@ This Repository contains a collection of examples of how to work with the [ohsom
 
 ## Python examples
 
-The [`python`](https://github.com/GIScience/ohsome-examples/tree/master/python#readme) directory contains the following examples written in Python using jupyter notebooks:
+The [`Python`](https://github.com/GIScience/ohsome-examples/tree/master/python#readme) directory contains the following examples written in Python using jupyter notebooks:
 
 * [Data Aggregation Endpoint](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome-data-aggregation.ipynb)
 * [Analysing HOT Tasking Manager Projects in Nepal](https://nbviewer.jupyter.org/github/GIScience/ohsome-examples/blob/master/python/jupyter-notebooks/ohsome_api_hot_tm_project1008.ipynb)
