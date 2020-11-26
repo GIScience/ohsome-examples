@@ -21,6 +21,7 @@ The [`R`](https://github.com/GIScience/ohsome-examples/tree/master/R#readme) dir
 You can find further usage examples of the ohsome API in the following places:
 
 * [ohsome-api-analysis-examples](https://gitlab.gistools.geog.uni-heidelberg.de/giscience/big-data/ohsome/ohsome-api-analysis-examples) – a collection of further examples of analyses using the ohsome API.
+  * [Exploring Localness](https://gitlab.gistools.geog.uni-heidelberg.de/giscience/big-data/ohsome/ohsome-api-analysis-examples/exploring-localness-blogpost) [Blogpost](http://k1z.blog.uni-heidelberg.de/2020/11/23/exploring-localness-of-osm-data-an-analysis-using-the-oshdb-and-ohsome-api/).
 * the whole [how to become ohsome](http://k1z.blog.uni-heidelberg.de/tag/become-ohsome/) series on the giscience blog.
 * [visualizing the evolution of OSM data using QGIS](https://gitlab.gistools.geog.uni-heidelberg.de/-/snippets/23)
 
