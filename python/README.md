@@ -15,6 +15,8 @@ Here you find examples and use cases for the ohsome API using jupyter notebooks.
 
 ## Installation
 
+These examples require Python version ≥ 3.6 to be installed.
+
 Get the git repository.
 ```bash
 git clone
