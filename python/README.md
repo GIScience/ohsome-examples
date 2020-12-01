@@ -45,5 +45,5 @@ ipython kernel install --user --name=ohsome-examples
 
 Run jupyter notebook.
 ```bash
-jupyter notebook
+jupyter notebook jupyter-notebooks
 ```
