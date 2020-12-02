@@ -15,3 +15,4 @@ All changes to this repository should go through pull requests, and require:
 1. Ensure that changes are working and don't break other examples (e.g. after updating dependencies).
 2. Update the `README.md`s when adding new examples.
 3. If an example requires external libraries: Ensure that these are properly documented and included in the requirements definitions file (e.g. `requirements.txt` for Python examples).
+4. Check your code style (e.g. using [PEP 8](https://www.python.org/dev/peps/pep-0008) for Python examples)
