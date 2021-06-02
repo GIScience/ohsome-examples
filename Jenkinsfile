@@ -18,6 +18,7 @@ pipeline {
     SNAPSHOT_DEPLOY = false
 
     WORK_DIR = "${WORKSPACE}/python"
+    HOME = "${WORK_DIR}"
   }
 
   stages {
