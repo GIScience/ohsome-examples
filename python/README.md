@@ -49,3 +49,10 @@ Run jupyter notebook.
 ```bash
 jupyter notebook jupyter-notebooks
 ```
+
+
+### Test
+If you want to test all notebooks, use pytest with the following parameter:
+```bash
+pytest --nbmake jupyter-notebooks
+```
