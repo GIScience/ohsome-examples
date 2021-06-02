@@ -12,3 +12,7 @@ numpy
 pandas
 plotly
 requests
+
+# testing dependencies
+pytest
+nbmake
