@@ -1,0 +1,14 @@
+# notebooks
+jupyter
+
+# in-notebook dependencies
+branca
+chart-studio
+folium
+ipyleaflet
+ipython
+matplotlib
+numpy
+pandas
+plotly
+requests
